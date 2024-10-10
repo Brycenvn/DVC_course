@@ -32,5 +32,22 @@ Learning DVC tools for MLOps following this course: https://learn.dvc.ai/
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
                           generated with `pip freeze > requirements.txt`
 
---------
+```
+
+---
+
+## <details>
+<summary>Chapter 3: Pipelines Automation & Configuration</summary>
+
+- [Step 0](notebooks/step-0-prototype.ipynb): Only use Notebook to code full pipeline (run all)
+- [Step 1](notebooks/step-1-organize-ml-project.ipynb): Store data after each stage and organize ML project
+- [Step 2](notebooks/step-2-create-config-file.ipynb): Using yaml as config file to manage params of project (dataset path, save path,...)
+- [Step 3](notebooks/step-3-reusable-code.ipynb): Create Python Module for reuse helpful function
+- [Step 4](notebooks/step-4-build-ml-pipeline.ipynb): Create simple ML Pipeline
+
+![Step 4: Simple ML Pipeline](figs/step4_simple_ML_pipeline.PNG)
+
+</details>
+
+
 
