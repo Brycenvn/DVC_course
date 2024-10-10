@@ -1,8 +1,11 @@
-black
-flake8
-isort
-pip
-python-dotenv
--e .
 dvc
-cookiecutter-data-science
+joblib
+matplotlib
+numpy
+pandas
+pytest
+python-box
+pyyaml
+scikit-learn
+scipy
+tqdm
