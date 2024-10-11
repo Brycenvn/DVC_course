@@ -92,8 +92,8 @@ stages:
           random_state: 42
           log_level: INFO
         train:
-          cv: 3
-          estimator_name: logreg
+          cv: 5
+          estimator_name: svm
           estimators:
             logreg:
               param_grid:
@@ -120,8 +120,8 @@ stages:
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: 1ca2deb45b81eb3fbf397c8b6780cb98
-      size: 2835
+      md5: 0f80d16008168d4645fa391b8d353fee
+      size: 6831
   evaluate:
     cmd: python src/stages/evaluate.py --config=params.yaml
     deps:
@@ -131,12 +131,12 @@ stages:
       size: 1523
     - path: models/model.joblib
       hash: md5
-      md5: 1ca2deb45b81eb3fbf397c8b6780cb98
-      size: 2835
+      md5: 0f80d16008168d4645fa391b8d353fee
+      size: 6831
     - path: params.yaml
       hash: md5
-      md5: 4e2a910c9a9f563570cdcc9eda257888
-      size: 840
+      md5: bd77aaeb10a58b4e19151bc586f27be3
+      size: 836
     - path: src/stages/evaluate.py
       hash: md5
       md5: 6208fb25f1a282eb922343ab73121563
@@ -144,9 +144,9 @@ stages:
     outs:
     - path: reports/confusion_matrix.png
       hash: md5
-      md5: 68d6b7886ca58f8c88b61732a0245f89
-      size: 24999
+      md5: bca8dcc1ecbd3accffc81db42b797d8f
+      size: 24920
     - path: reports/metrics.json
       hash: md5
-      md5: d533847a0ca14ca93752b1b1f1df349e
-      size: 32
+      md5: 3329ba1a6b18407f725a1e25a5500560
+      size: 17
