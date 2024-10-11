@@ -29,7 +29,6 @@ train:
         C: [0.001]
         max_iter: [100]
         solver: ['lbfgs']
-        multi_class: ['multinomial']
     svm: # sklearn.svm.SVC
       param_grid:
         C: [0.1, 1.0]

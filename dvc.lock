@@ -1,0 +1,124 @@
+schema: '2.0'
+stages:
+  data_load:
+    cmd: python src/stages/data_load.py --config=params.yaml
+    deps:
+    - path: src/stages/data_load.py
+      hash: md5
+      md5: f3169382505373ee5c5cc020b00a83b5
+      size: 1013
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+          log_level: INFO
+        data_load:
+          dataset_csv: data/raw/iris.csv
+    outs:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 10f5f61b137fa708403ea5c480386bfe
+      size: 2908
+  featurize:
+    cmd: python src/stages/featurize.py --config=params.yaml
+    deps:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 10f5f61b137fa708403ea5c480386bfe
+      size: 2908
+    - path: src/stages/featurize.py
+      hash: md5
+      md5: 33ebdaddf0760c308ff20ca8292fe10b
+      size: 1350
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+          log_level: INFO
+        featurize:
+          features_path: data/processed/featured_iris.csv
+          target_column: target
+    outs:
+    - path: data/processed/featured_iris.csv
+      hash: md5
+      md5: e3623a87a01908f403ea7e6260094f57
+      size: 7411
+  data_split:
+    cmd: python src/stages/data_split.py --config=params.yaml
+    deps:
+    - path: data/processed/featured_iris.csv
+      hash: md5
+      md5: e3623a87a01908f403ea7e6260094f57
+      size: 7411
+    - path: src/stages/data_split.py
+      hash: md5
+      md5: e5aaf6d196b0547783acf4b12ef8eafe
+      size: 1356
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+          log_level: INFO
+        data_split:
+          test_size: 0.2
+          trainset_path: data/processed/train_iris.csv
+          testset_path: data/processed/test_iris.csv
+        featurize:
+          features_path: data/processed/featured_iris.csv
+          target_column: target
+    outs:
+    - path: data/processed/test_iris.csv
+      hash: md5
+      md5: 8ca0a17f1b6f79dbdfdb598484633e1e
+      size: 1523
+    - path: data/processed/train_iris.csv
+      hash: md5
+      md5: a2ec47f82aca318b8c0ff05879d1ee4f
+      size: 5845
+  train:
+    cmd: python src/stages/train.py --config=params.yaml
+    deps:
+    - path: data/processed/train_iris.csv
+      hash: md5
+      md5: a2ec47f82aca318b8c0ff05879d1ee4f
+      size: 5845
+    - path: src/stages/train.py
+      hash: md5
+      md5: eb68f8d6532ab253d53e6c9e751984c4
+      size: 1429
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+          log_level: INFO
+        train:
+          cv: 3
+          estimator_name: logreg
+          estimators:
+            logreg:
+              param_grid:
+                C:
+                - 0.001
+                max_iter:
+                - 100
+                solver:
+                - lbfgs
+            svm:
+              param_grid:
+                C:
+                - 0.1
+                - 1.0
+                kernel:
+                - rbf
+                - linear
+                gamma:
+                - scale
+                degree:
+                - 3
+                - 5
+          model_path: models/model.joblib
+    outs:
+    - path: models/model.joblib
+      hash: md5
+      md5: a4aa8da9fe8be4bf41afbd9dad133dc5
+      size: 2835
