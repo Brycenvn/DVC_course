@@ -45,6 +45,7 @@ stages:
     deps:
     - data/processed/test_iris.csv
     - models/model.joblib
+    - params.yaml
     - src/stages/evaluate.py
     outs:
     - reports/confusion_matrix.png

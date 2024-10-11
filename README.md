@@ -36,6 +36,12 @@ Learning DVC tools for MLOps following this course: https://learn.dvc.ai/
 
 ---
 
+
+<script>
+import basics from 'figs/dag.md'
+</script>
+
+
 ##  Chapter 3: Pipelines Automation & Configuration
 <details open>
 <summary>Each step below show improvement in ML Pipelines:</summary>
@@ -48,9 +54,12 @@ Learning DVC tools for MLOps following this course: https://learn.dvc.ai/
 
 - [Step 3](notebooks/step-3-reusable-code.ipynb): Create Python Module for reuse helpful function
 
-- [Step 4](notebooks/step-4-build-ml-pipeline.ipynb): Create simple ML Pipeline
+- [Step 4](notebooks/step-4-build-ml-pipeline.ipynb): Create simple ML Pipeline (still need run each stage by stage)
 ![Step 4: Simple ML Pipeline](figs/step4_simple_ML_pipeline.PNG)
+
+- [Step 5](notebooks/step-5-automate-ml-pipeline.ipynb): Create automate ML Pipeline using DVC (run all pipeline in 1 command)
+
+<!--@include:figs/dag.md-->
+
 </details>
-
-
 
