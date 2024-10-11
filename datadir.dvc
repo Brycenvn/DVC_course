@@ -1,0 +1,6 @@
+outs:
+- md5: 9f3a7166db65447e200b67351c88e603.dir
+  size: 0
+  nfiles: 3
+  hash: md5
+  path: datadir
