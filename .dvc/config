@@ -1,4 +1,8 @@
 [core]
-    remote = local
+    remote = localremote
 ['remote "local"']
     url = /tmp/dvc/course-ds-base
+['remote "myremote"']
+    url = /tmp/dvc
+['remote "localremote"']
+    url = ../../../localremote
