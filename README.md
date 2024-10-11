@@ -56,5 +56,7 @@ Learning DVC tools for MLOps following this course: https://learn.dvc.ai/
 ![Step 5: Simple DVC Pipeline](figs/step5_simple_DVC_ML_pipeline.PNG)
 [export pipeline graph](figs/dag.md)
 
+- [Step 6](notebooks/step-5-automate-ml-pipeline.ipynb): Collaborate with Versioning control (data, model) using DVC
+
 </details>
 
