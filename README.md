@@ -7,34 +7,42 @@
 
 Learning DVC tools for MLOps following this course: https://learn.dvc.ai/
 
-## Project Organization
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         learndvc and configuration for tools like black
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-                          generated with `pip freeze > requirements.txt`
+##  Chapter 2: Practices and Tools for Efficient Collaboration in  ML projects
+- Init project using efficient tools:
+    - Source Version Control: `Git`
+	- Environment: `Python - Conda`
+	- Template project: `cookiescutter`
 
-```
+    <details >
+    <summary>Example for a MLOps project structure:</summary>
 
----
+    ```
+    ├── LICENSE            <- Open-source license if one is chosen
+    ├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+    ├── README.md          <- The top-level README for developers using this project.
+    ├── data
+    │   ├── processed      <- The final, canonical data sets for modeling.
+    │   └── raw            <- The original, immutable data dump.
+    │
+    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    │
+    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
+    │                         the creator's initials, and a short `-` delimited description, e.g.
+    │                         `1.0-jqp-initial-data-exploration`.
+    │
+    ├── pyproject.toml     <- Project configuration file with package metadata for 
+    │                         learndvc and configuration for tools like black
+    │
+    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+    │   └── figures        <- Generated graphics and figures to be used in reporting
+    │
+    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+                            generated with `pip freeze > requirements.txt`
+
+    ```
+    </details>
+
 
 
 ##  Chapter 3: Pipelines Automation & Configuration
@@ -56,7 +64,19 @@ Learning DVC tools for MLOps following this course: https://learn.dvc.ai/
 ![Step 5: Simple DVC Pipeline](figs/step5_simple_DVC_ML_pipeline.PNG)
 [export pipeline graph](figs/dag.md)
 
-- [Step 6](notebooks/step-5-automate-ml-pipeline.ipynb): Collaborate with Versioning control (data, model) using DVC
-
 </details>
+
+##  Chapter 4: Versoning Data & Models
+
+- [Step 6](notebooks/step-5-automate-ml-pipeline.ipynb): Collaborate with Versioning control (data, model) using DVC
+    - Setup versioning with dvc
+    - Share and access vesion
+    - Switch versions
+
+##  Chapter 5: Data and models versioning with DVC
+
+- [Step 7](notebooks/step-7-metrics-and-experiments.ipynb): Add Metrics and experiments tracking
+    - Setup metrics and plot with DVC
+    - Run experiments and compare metric/plot with `dvc diff`
+
 
