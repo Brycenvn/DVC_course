@@ -17,7 +17,7 @@ featurize:
   target_column: target
 train:
   cv: 3
-  estimator_name: logreg
+  estimator_name: svm
   estimators:
     logreg:
       param_grid:
@@ -34,6 +34,7 @@ train:
         C:
         - 0.1
         - 1.0
+        - 10
         degree:
         - 3
         - 5

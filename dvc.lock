@@ -93,7 +93,7 @@ stages:
           random_state: 42
         train:
           cv: 3
-          estimator_name: logreg
+          estimator_name: svm
           estimators:
             logreg:
               param_grid:
@@ -110,6 +110,7 @@ stages:
                 C:
                 - 0.1
                 - 1.0
+                - 10
                 degree:
                 - 3
                 - 5
@@ -124,8 +125,8 @@ stages:
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: 78b04ac8c4a48843aa40dc1e0a69f5f2
-      size: 3099
+      md5: b50fab11ff6aee28db72d14e99320391
+      size: 9199
   evaluate:
     cmd: python src/stages/evaluate.py --config=params.yaml
     deps:
@@ -135,12 +136,12 @@ stages:
       size: 1523
     - path: models/model.joblib
       hash: md5
-      md5: 78b04ac8c4a48843aa40dc1e0a69f5f2
-      size: 3099
+      md5: b50fab11ff6aee28db72d14e99320391
+      size: 9199
     - path: params.yaml
       hash: md5
-      md5: 69b0cdbb56f8ba375c005909395a0881
-      size: 956
+      md5: cd7f6529f8c4836e218dc724cf020ce3
+      size: 967
     - path: src/stages/evaluate.py
       hash: md5
       md5: 7d60bfd50e963b5a5403e7b5b0c50c1d
