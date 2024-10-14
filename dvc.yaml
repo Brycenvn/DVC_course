@@ -3,43 +3,23 @@ stages:
     cmd: python src/stages/data_load.py --config=params.yaml
     deps:
     - src/stages/data_load.py
+    outs:
+    - data/raw/iris.csv
     params:
     - base
     - data_load
-    outs:
-    - data/raw/iris.csv
-  featurize:
-    cmd: python src/stages/featurize.py --config=params.yaml
-    deps:
-    - data/raw/iris.csv
-    - src/stages/featurize.py
-    params:
-    - base
-    - featurize
-    outs:
-    - data/processed/featured_iris.csv
   data_split:
     cmd: python src/stages/data_split.py --config=params.yaml
     deps:
     - data/processed/featured_iris.csv
     - src/stages/data_split.py
+    outs:
+    - data/processed/test_iris.csv
+    - data/processed/train_iris.csv
     params:
     - base
     - data_split
     - featurize
-    outs:
-    - data/processed/test_iris.csv
-    - data/processed/train_iris.csv
-  train:
-    cmd: python src/stages/train.py --config=params.yaml
-    deps:
-    - data/processed/train_iris.csv
-    - src/stages/train.py
-    params:
-    - base
-    - train
-    outs:
-    - models/model.joblib
   evaluate:
     cmd: python src/stages/evaluate.py --config=params.yaml
     deps:
@@ -49,4 +29,25 @@ stages:
     - src/stages/evaluate.py
     outs:
     - reports/confusion_matrix.png
+    metrics:
     - reports/metrics.json
+  featurize:
+    cmd: python src/stages/featurize.py --config=params.yaml
+    deps:
+    - data/raw/iris.csv
+    - src/stages/featurize.py
+    outs:
+    - data/processed/featured_iris.csv
+    params:
+    - base
+    - featurize
+  train:
+    cmd: python src/stages/train.py --config=params.yaml
+    deps:
+    - data/processed/train_iris.csv
+    - src/stages/train.py
+    outs:
+    - models/model.joblib
+    params:
+    - base
+    - train

@@ -20,8 +20,8 @@ data_split:
 
 
 train:
-  cv: 5
-  estimator_name: svm
+  cv: 3
+  estimator_name: logreg
   estimators:
     logreg: # sklearn.linear_model.LogisticRegression
       param_grid: # params of GridSearchCV constructor
@@ -35,7 +35,8 @@ train:
         gamma: ['scale']
         degree: [3, 5]
   model_path: models/model.joblib
-
+  reports_dir: reports
+  metrics_file: 'metrics.json'
 
 evaluate:
   reports_dir: reports
