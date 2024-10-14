@@ -1,0 +1,6 @@
+outs:
+- md5: 5541a96fc6b9ced1bfc39f068d9e8a4f.dir
+  size: 47385924
+  nfiles: 398
+  hash: md5
+  path: hymenoptera_data

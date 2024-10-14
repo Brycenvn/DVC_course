@@ -1,0 +1,8 @@
+.venv
+hymenoptera_data/
+.DS_Store
+val_results.json
+/dvclive
+/results
+/model.pt
+/hymenoptera_data
