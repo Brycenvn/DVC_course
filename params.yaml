@@ -16,8 +16,8 @@ featurize:
   features_path: data/processed/featured_iris.csv
   target_column: target
 train:
-  cv: 5
-  estimator_name: svm
+  cv: 3
+  estimator_name: logreg
   estimators:
     logreg:
       param_grid:
@@ -26,7 +26,7 @@ train:
         - 1.0
         - 10
         max_iter:
-        - 100
+        - 200
         solver:
         - lbfgs
     svm:

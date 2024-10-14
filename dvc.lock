@@ -92,8 +92,8 @@ stages:
           log_level: INFO
           random_state: 42
         train:
-          cv: 5
-          estimator_name: svm
+          cv: 3
+          estimator_name: logreg
           estimators:
             logreg:
               param_grid:
@@ -102,7 +102,7 @@ stages:
                 - 1.0
                 - 10
                 max_iter:
-                - 100
+                - 200
                 solver:
                 - lbfgs
             svm:
@@ -124,8 +124,8 @@ stages:
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: 4331c2249cb53dc5dc02da8f2abf2409
-      size: 6831
+      md5: 78b04ac8c4a48843aa40dc1e0a69f5f2
+      size: 3099
   evaluate:
     cmd: python src/stages/evaluate.py --config=params.yaml
     deps:
@@ -135,12 +135,12 @@ stages:
       size: 1523
     - path: models/model.joblib
       hash: md5
-      md5: 4331c2249cb53dc5dc02da8f2abf2409
-      size: 6831
+      md5: 78b04ac8c4a48843aa40dc1e0a69f5f2
+      size: 3099
     - path: params.yaml
       hash: md5
-      md5: c69aaa75e41a1255b029cf9137de04e2
-      size: 953
+      md5: 69b0cdbb56f8ba375c005909395a0881
+      size: 956
     - path: src/stages/evaluate.py
       hash: md5
       md5: 7d60bfd50e963b5a5403e7b5b0c50c1d
