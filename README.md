@@ -81,7 +81,22 @@ Learning DVC tools for MLOps following this course: https://learn.dvc.ai/
 - [Step 8](DVCLive_experiments/Step8%20Using%20DVCLive%20and%20Checkpoints%20in%20Deep%20Learning.ipynb): Add DVCLive into experiments tracking
     - Setup DVCLive
     - Run experiments and compare metric/plot 
-- Step 9: Metrics Tracking and Plots with DVCStudio
 
-## Chapter 6: 
+## Chapter 6: Experiments Management and Collaboration
+- Step 9: Experiments Tracking with DVCStudio
+    - Init project view in DVC Studio
+    - Experimenting workflow with Git, DVC and Studio
+    - Team Collaboration with DVC Studio
+    
 
+## Chapter 7: Review and Advanced Topics and Use Cases
+- Final Project (On-going):
+    1. Data registry
+    2. Run ML experiments on the cloud with CML
+    3. Run experiments from UI (DVC Studio)
+
+
+> Additions: DVC Extension for VS Code
+
+
+[View certificate ](figs/certificate.pdf)
