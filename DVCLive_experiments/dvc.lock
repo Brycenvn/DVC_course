@@ -1,0 +1,23 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python pretrained_model_tuner.py
+    deps:
+    - path: hymenoptera_data/
+      hash: md5
+      md5: 5541a96fc6b9ced1bfc39f068d9e8a4f.dir
+      size: 47385924
+      nfiles: 398
+    - path: pretrained_model_tuner.py
+      hash: md5
+      md5: e564b2010aff69ca2f1c69bde58f88e7
+      size: 7408
+    outs:
+    - path: dvclive/metrics.json
+      hash: md5
+      md5: cc19f0531ed43dcc854058dcc9856fca
+      size: 200
+    - path: model.pt
+      hash: md5
+      md5: c1fdb8606a66a4b74209b69f25f426ca
+      size: 2961418

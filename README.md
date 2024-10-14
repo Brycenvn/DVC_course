@@ -78,5 +78,10 @@ Learning DVC tools for MLOps following this course: https://learn.dvc.ai/
 - [Step 7](notebooks/step-7-metrics-and-experiments.ipynb): Add Metrics and experiments tracking
     - Setup metrics and plot with DVC
     - Run experiments and compare metric/plot with `dvc diff`
+- [Step 8](DVCLive_experiments/Step8%20Using%20DVCLive%20and%20Checkpoints%20in%20Deep%20Learning.ipynb): Add DVCLive into experiments tracking
+    - Setup DVCLive
+    - Run experiments and compare metric/plot 
+- Step 9: Metrics Tracking and Plots with DVCStudio
 
+## Chapter 6: 
 
