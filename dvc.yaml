@@ -27,10 +27,14 @@ stages:
     - models/model.joblib
     - params.yaml
     - src/stages/evaluate.py
+    metrics:
+    - reports/metrics.json:
+        cache: false
     outs:
     - reports/confusion_matrix.png
-    metrics:
-    - reports/metrics.json
+    plots:
+    - reports/cm_plot.csv:
+        cache: false
   featurize:
     cmd: python src/stages/featurize.py --config=params.yaml
     deps:

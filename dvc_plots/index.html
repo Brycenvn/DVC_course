@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>DVC Plot</title>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+    
+    <style>
+        table {
+            border-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id = "reports_cm_plot_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"y_true": "versicolor", "predicted": "versicolor", "step": 0, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 1, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 2, "rev": "workspace"}, {"y_true": "versicolor", "predicted": "versicolor", "step": 3, "rev": "workspace"}, {"y_true": "versicolor", "predicted": "versicolor", "step": 4, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 5, "rev": "workspace"}, {"y_true": "versicolor", "predicted": "versicolor", "step": 6, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 7, "rev": "workspace"}, {"y_true": "versicolor", "predicted": "versicolor", "step": 8, "rev": "workspace"}, {"y_true": "versicolor", "predicted": "versicolor", "step": 9, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 10, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 11, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 12, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 13, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 14, "rev": "workspace"}, {"y_true": "versicolor", "predicted": "versicolor", "step": 15, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 16, "rev": "workspace"}, {"y_true": "versicolor", "predicted": "versicolor", "step": 17, "rev": "workspace"}, {"y_true": "versicolor", "predicted": "versicolor", "step": 18, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 19, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 20, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 21, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 22, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 23, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 24, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 25, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 26, "rev": "workspace"}, {"y_true": "virginica", "predicted": "virginica", "step": 27, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 28, "rev": "workspace"}, {"y_true": "setosa", "predicted": "setosa", "step": 29, "rev": "workspace"}]}, "title": {"text": "reports/cm_plot.csv", "anchor": "middle"}, "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "encoding": {"x": {"field": "step", "type": "quantitative", "title": "step"}, "color": {"field": "rev", "scale": {"domain": ["workspace"], "range": ["#945dd6"]}}, "strokeDash": {}}, "layer": [{"layer": [{"params": [{"name": "grid", "select": "interval", "bind": "scales"}], "mark": "line"}, {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}], "encoding": {"y": {"field": "predicted", "type": "quantitative", "title": "predicted", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}, "transform": [{"loess": "predicted", "on": "step", "groupby": ["rev"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "step", "type": "quantitative", "title": "step"}, "y": {"field": "predicted", "type": "quantitative", "title": "predicted", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}, {"mark": {"type": "circle", "size": 10}, "encoding": {"x": {"aggregate": "max", "field": "step", "type": "quantitative", "title": "step"}, "y": {"aggregate": {"argmax": "step"}, "field": "predicted", "type": "quantitative", "title": "predicted", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}, {"transform": [{"calculate": "datum.rev", "as": "pivot_field"}, {"pivot": "pivot_field", "op": "mean", "value": "predicted", "groupby": ["step"]}], "mark": {"type": "rule", "tooltip": {"content": "data"}, "stroke": "grey"}, "encoding": {"opacity": {"condition": {"value": 0.3, "param": "hover", "empty": false}, "value": 0}}, "params": [{"name": "hover", "select": {"type": "point", "fields": ["step"], "nearest": true, "on": "mouseover", "clear": "mouseout"}}]}]};
+            vegaEmbed('#reports_cm_plot_csv', spec);
+        </script>
+    </div>
+    
+</body>
+</html>

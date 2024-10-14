@@ -10,8 +10,8 @@ stages:
     params:
       params.yaml:
         base:
-          random_state: 42
           log_level: INFO
+          random_state: 42
         data_load:
           dataset_csv: data/raw/iris.csv
     outs:
@@ -33,8 +33,8 @@ stages:
     params:
       params.yaml:
         base:
-          random_state: 42
           log_level: INFO
+          random_state: 42
         featurize:
           features_path: data/processed/featured_iris.csv
           target_column: target
@@ -57,12 +57,12 @@ stages:
     params:
       params.yaml:
         base:
-          random_state: 42
           log_level: INFO
+          random_state: 42
         data_split:
           test_size: 0.2
-          trainset_path: data/processed/train_iris.csv
           testset_path: data/processed/test_iris.csv
+          trainset_path: data/processed/train_iris.csv
         featurize:
           features_path: data/processed/featured_iris.csv
           target_column: target
@@ -89,16 +89,18 @@ stages:
     params:
       params.yaml:
         base:
-          random_state: 42
           log_level: INFO
+          random_state: 42
         train:
-          cv: 3
-          estimator_name: logreg
+          cv: 5
+          estimator_name: svm
           estimators:
             logreg:
               param_grid:
                 C:
-                - 0.001
+                - 0.1
+                - 1.0
+                - 10
                 max_iter:
                 - 100
                 solver:
@@ -108,22 +110,22 @@ stages:
                 C:
                 - 0.1
                 - 1.0
-                kernel:
-                - rbf
-                - linear
-                gamma:
-                - scale
                 degree:
                 - 3
                 - 5
+                gamma:
+                - scale
+                kernel:
+                - rbf
+                - linear
+          metrics_file: metrics.json
           model_path: models/model.joblib
           reports_dir: reports
-          metrics_file: metrics.json
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: a1338f38705f66d127514fd180798ff2
-      size: 2835
+      md5: 4331c2249cb53dc5dc02da8f2abf2409
+      size: 6831
   evaluate:
     cmd: python src/stages/evaluate.py --config=params.yaml
     deps:
@@ -133,22 +135,26 @@ stages:
       size: 1523
     - path: models/model.joblib
       hash: md5
-      md5: a1338f38705f66d127514fd180798ff2
-      size: 2835
+      md5: 4331c2249cb53dc5dc02da8f2abf2409
+      size: 6831
     - path: params.yaml
       hash: md5
-      md5: fab9dba3b1fd7e33acb2542f26d59803
-      size: 935
+      md5: c69aaa75e41a1255b029cf9137de04e2
+      size: 953
     - path: src/stages/evaluate.py
       hash: md5
-      md5: 6208fb25f1a282eb922343ab73121563
-      size: 2415
+      md5: 7d60bfd50e963b5a5403e7b5b0c50c1d
+      size: 3302
     outs:
+    - path: reports/cm_plot.csv
+      hash: md5
+      md5: 268ba26b0add45a734667a9806bea9c3
+      size: 606
     - path: reports/confusion_matrix.png
       hash: md5
-      md5: 68d6b7886ca58f8c88b61732a0245f89
-      size: 24999
+      md5: bca8dcc1ecbd3accffc81db42b797d8f
+      size: 24920
     - path: reports/metrics.json
       hash: md5
-      md5: d533847a0ca14ca93752b1b1f1df349e
-      size: 32
+      md5: 3329ba1a6b18407f725a1e25a5500560
+      size: 17

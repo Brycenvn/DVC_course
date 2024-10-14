@@ -1,44 +1,47 @@
-
 base:
-  random_state: 42
   log_level: INFO
-
-
+  random_state: 42
 data_load:
-  dataset_csv: 'data/raw/iris.csv'
-
-
-featurize:
-  features_path: 'data/processed/featured_iris.csv'
-  target_column: target
-
-
+  dataset_csv: data/raw/iris.csv
 data_split:
   test_size: 0.2
-  trainset_path: 'data/processed/train_iris.csv'
-  testset_path: 'data/processed/test_iris.csv'
-
-
+  testset_path: data/processed/test_iris.csv
+  trainset_path: data/processed/train_iris.csv
+evaluate:
+  confusion_matrix_data: cm_plot.csv
+  confusion_matrix_image: confusion_matrix.png
+  metrics_file: metrics.json
+  reports_dir: reports
+featurize:
+  features_path: data/processed/featured_iris.csv
+  target_column: target
 train:
-  cv: 3
-  estimator_name: logreg
+  cv: 5
+  estimator_name: svm
   estimators:
-    logreg: # sklearn.linear_model.LogisticRegression
-      param_grid: # params of GridSearchCV constructor
-        C: [0.001]
-        max_iter: [100]
-        solver: ['lbfgs']
-    svm: # sklearn.svm.SVC
+    logreg:
       param_grid:
-        C: [0.1, 1.0]
-        kernel: ['rbf', 'linear']
-        gamma: ['scale']
-        degree: [3, 5]
+        C:
+        - 0.1
+        - 1.0
+        - 10
+        max_iter:
+        - 100
+        solver:
+        - lbfgs
+    svm:
+      param_grid:
+        C:
+        - 0.1
+        - 1.0
+        degree:
+        - 3
+        - 5
+        gamma:
+        - scale
+        kernel:
+        - rbf
+        - linear
+  metrics_file: metrics.json
   model_path: models/model.joblib
   reports_dir: reports
-  metrics_file: 'metrics.json'
-
-evaluate:
-  reports_dir: reports
-  metrics_file: 'metrics.json'
-  confusion_matrix_image: 'confusion_matrix.png'
