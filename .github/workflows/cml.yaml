@@ -5,21 +5,19 @@ jobs:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml:0-dvc2-base1
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v3
+      - uses: iterative/setup-cml@v1
+      - name: Train model
+        run: |
+          # Your ML workflow goes here
+          pip install -r requirements.txt
+          dvc get https://github.com/iterative/dataset-registry/ dvc-course/hymenoptera_data
+          python pretrained_model_tuner.py
+      
       - name: Generate metrics report
         env:
           REPO_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
-          cd DVCLive_experiments
-
           pip install -r requirements.txt
-          
-          dvc get https://github.com/iterative/dataset-registry/ dvc-course/hymenoptera_data
-
-          python pretrained_model_tuner.py
-
           dvc metrics show --md >> report.md
-
-          cml send-comment report.md
+          cml comment create report.md
