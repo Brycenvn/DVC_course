@@ -11,13 +11,15 @@ jobs:
         run: |
           rm -rf /__w/DVC_course/DVC_course/
 
-      - name: Debug environment
+      - name: List directory contents
         run: |
-          echo "Current user: $(whoami)"
+          cd DVCLive_experiments
+          echo "Current directory: $(pwd)"
+          echo "Contents of the current directory:"
+          ls -la
 
       - name: Train model
         run: |
-          cd DVCLive_experiments
           pip install -r requirements.txt
           dvc get https://github.com/iterative/dataset-registry/ dvc-course/hymenoptera_data
           python pretrained_model_tuner.py
