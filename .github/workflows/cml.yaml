@@ -14,7 +14,7 @@ jobs:
       - name: Debug environment
         run: |
           echo "Current user: $(whoami)"
-          ls -la /__w/DVC_course/DVC_course/
+
       - name: Train model
         run: |
           cd DVCLive_experiments
