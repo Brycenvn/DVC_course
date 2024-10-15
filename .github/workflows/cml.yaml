@@ -10,7 +10,7 @@ jobs:
           fetch-depth: 0
       - name: Generate metrics report
         env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
           cd DVCLive_experiments
 
