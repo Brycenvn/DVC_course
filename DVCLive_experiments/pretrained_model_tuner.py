@@ -12,7 +12,7 @@ from ruamel.yaml import YAML
 from dvclive import Live
 
 
-dvclive = Live('dvclive')
+dvclive = Live(report='html', dir='results', resume=True)
 # Where the data comes from
 data_dir = "./hymenoptera_data"
 
@@ -82,22 +82,26 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=2, is_incep
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
 
             epoch_time_elapsed = time.time() - since
-
+            
             if phase == 'train':
                 torch.save(model.state_dict(), "model.pt")
-
-                dvclive.log_metric('acc', epoch_acc.item())
-                dvclive.log_metric('loss', epoch_loss)
-                dvclive.log_metric('training_time', epoch_time_elapsed)
+                with open("results.json", "w") as fd:
+                    json.dump({'acc': epoch_acc.item(), 'loss': epoch_loss, 'training_time': epoch_time_elapsed}, fd, indent=4)
+                dvclive.log_metric('acc', epoch_acc.item(), plot=True, timestamp=True)
+                dvclive.log_metric('loss', epoch_loss, plot=True, timestamp=True)
+                dvclive.log_metric('training_time', epoch_time_elapsed, plot=True, timestamp=True)
 
             if phase == 'val':
-                dvclive.log_metric('val_acc', epoch_acc.item())
-                dvclive.log_metric('val_loss', epoch_loss)
-
+                with open("val_results.json", "w") as fd:
+                    json.dump({'acc': epoch_acc.item(), 'loss': epoch_loss}, fd, indent=4)
+                dvclive.log_metric('val_acc', epoch_acc.item(), plot=True, timestamp=True)
+                dvclive.log_metric('val_loss', epoch_loss, plot=True, timestamp=True)
                 val_acc_history.append(epoch_acc)
+
             if phase == 'val' and epoch_acc > best_acc:
                 best_acc = epoch_acc
                 best_model_wts = copy.deepcopy(model.state_dict())
+
         dvclive.next_step()
         print()
 

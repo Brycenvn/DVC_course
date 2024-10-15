@@ -4,15 +4,21 @@ stages:
     deps:
     - hymenoptera_data/
     - pretrained_model_tuner.py
+    params:
+    - lr
+    - momentum
+    - model_name
+    - num_classes
+    - batch_size
+    - num_epochs
     outs:
-    - dvclive/metrics.json:
+    - model.pt:
+        checkpoint: true
         cache: false
-    - model.pt
 metrics:
 - results/metrics.json
-- dvclive/metrics.json
 plots:
-- results/plots/metrics:
-    x: step
 - dvclive/plots/metrics:
+    x: step
+- results/plots/metrics:
     x: step

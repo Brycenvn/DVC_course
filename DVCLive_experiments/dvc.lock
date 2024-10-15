@@ -10,14 +10,18 @@ stages:
       nfiles: 398
     - path: pretrained_model_tuner.py
       hash: md5
-      md5: e564b2010aff69ca2f1c69bde58f88e7
-      size: 7408
+      md5: 00db3b1900dac6f47b45f3bc3ea8b4b1
+      size: 7922
+    params:
+      params.yaml:
+        batch_size: 10
+        lr: 0.001
+        model_name: squeezenet
+        momentum: 0.01
+        num_classes: 2
+        num_epochs: 2
     outs:
-    - path: dvclive/metrics.json
-      hash: md5
-      md5: cc19f0531ed43dcc854058dcc9856fca
-      size: 200
     - path: model.pt
       hash: md5
-      md5: c1fdb8606a66a4b74209b69f25f426ca
+      md5: 78f51eae003fcc5efa8ffdabf21775ed
       size: 2961418
