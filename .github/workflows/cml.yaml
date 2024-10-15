@@ -7,6 +7,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: iterative/setup-cml@v1
+      - name: Clean up directory
+        run: |
+          rm -rf /__w/DVC_course/DVC_course/
+
+      - name: Debug environment
+        run: |
+          echo "Current user: $(whoami)"
+          ls -la /__w/DVC_course/DVC_course/
       - name: Train model
         run: |
           cd DVCLive_experiments
