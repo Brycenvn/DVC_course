@@ -18,6 +18,5 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
-          pip install -r requirements.txt
           dvc metrics show --md >> report.md
           cml comment create report.md
