@@ -7,19 +7,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: iterative/setup-cml@v1
-      - name: Clean up directory
-        run: |
-          rm -rf /__w/DVC_course/DVC_course/
-          ls -la
-
-      - name: List directory contents
-        run: |
-          cd DVCLive_experiments
-          echo "Current directory: $(pwd)"
-          echo "Contents of the current directory:"
-
       - name: Train model
         run: |
+          git config --global --add safe.directory *
+          cd DVCLive_experiments
           pip install -r requirements.txt
           dvc get https://github.com/iterative/dataset-registry/ dvc-course/hymenoptera_data
           python pretrained_model_tuner.py
